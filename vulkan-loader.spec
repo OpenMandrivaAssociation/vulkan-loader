@@ -3,7 +3,7 @@
 
 Name:           vulkan-loader
 Version:        1.1.102
-Release:        1
+Release:        2
 Summary:        Vulkan ICD desktop loader
 
 License:        ASL 2.0
@@ -49,6 +49,7 @@ validation layers, between an application and the drivers.
 Summary:        Development files for %{name}
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       vulkan-headers >= %{version}
+Provides:	vulkan-devel = %{EVRD}
 
 %description -n %{devname}
 The %{name}-devel package contains libraries and header files for
