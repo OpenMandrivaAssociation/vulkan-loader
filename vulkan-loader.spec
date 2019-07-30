@@ -1,25 +1,23 @@
 %define libname %mklibname vulkan 1
 %define devname %mklibname vulkan -d
 
-Name:           vulkan-loader
-Version:        1.1.102
-Release:        2
-Summary:        Vulkan ICD desktop loader
-
-License:        ASL 2.0
-URL:            https://github.com/KhronosGroup/Vulkan-Loader
-Source0:        https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}.tar.gz
-
-BuildRequires:  cmake
-BuildRequires:  ninja
-BuildRequires:  pkgconfig(python3)
-BuildRequires:  vulkan-headers >= %{version}
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xrandr)
+Name:		vulkan-loader
+Version:	1.1.115
+Release:	1
+Summary:	Vulkan ICD desktop loader
+License:	ASL 2.0
+URL:		https://github.com/KhronosGroup/Vulkan-Loader
+Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}.tar.gz
+BuildRequires:	cmake
+BuildRequires:	ninja
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	vulkan-headers >= %{version}
+BuildRequires:	pkgconfig(wayland-client)
+BuildRequires:	pkgconfig(wayland-cursor)
+BuildRequires:	pkgconfig(wayland-server)
+BuildRequires:	pkgconfig(wayland-egl)
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xrandr)
 Requires:	%{libname} = %{EVRD}
 
 %description
@@ -46,9 +44,9 @@ Additionally, the loader manages inserting Vulkan layer libraries, such as
 validation layers, between an application and the drivers.
 
 %package -n %{devname}
-Summary:        Development files for %{name}
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
-Requires:       vulkan-headers >= %{version}
+Summary:	Development files for %{name}
+Requires:	%{libname}%{?_isa} = %{version}-%{release}
+Requires:	vulkan-headers >= %{version}
 Provides:	vulkan-devel = %{EVRD}
 
 %description -n %{devname}
@@ -69,12 +67,10 @@ validation layers, between an application and the drivers.
 %prep
 %autosetup -n Vulkan-Loader-%{version}
 
-
 %build
 %cmake \
 	-GNinja
 %ninja_build
-
 
 %install
 %ninja_install -C build
