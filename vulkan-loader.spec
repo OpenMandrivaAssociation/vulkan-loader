@@ -2,7 +2,7 @@
 %define devname %mklibname vulkan -d
 
 Name:		vulkan-loader
-Version:	1.1.115
+Version:	1.1.117
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
