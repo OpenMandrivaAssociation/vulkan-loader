@@ -1,6 +1,10 @@
 %define libname %mklibname vulkan 1
 %define devname %mklibname vulkan -d
 
+%ifarch %{ix86}
+%global optflags %{optflags} -fno-integrated-as
+%endif
+
 Name:		vulkan-loader
 Version:	1.1.119
 Release:	1
