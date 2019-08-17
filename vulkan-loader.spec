@@ -2,12 +2,12 @@
 %define devname %mklibname vulkan -d
 
 Name:		vulkan-loader
-Version:	1.1.117
+Version:	1.1.119
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
-Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/Vulkan-Loader-%{version}.tar.gz
+Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(python3)
@@ -27,7 +27,7 @@ loader for Windows, Linux, and MacOS.
 %package -n %{libname}
 Summary:	Vulkan ICD loader library
 Group:		System/Libraries
-Requires:	%{name}%{?_isa} = %{EVRD}
+Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
 The Vulkan ICD loader library.
