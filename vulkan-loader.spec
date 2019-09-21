@@ -6,7 +6,7 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.1.119
+Version:	1.1.123
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
