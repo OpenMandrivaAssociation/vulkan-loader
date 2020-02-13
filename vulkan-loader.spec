@@ -2,12 +2,14 @@
 %define devname %mklibname vulkan -d
 
 %ifarch %{ix86}
-%global optflags %{optflags} -fno-integrated-as
+%global optflags %{optflags} -O3 -fno-integrated-as
+%else
+%global optflags %{optflags} -O3
 %endif
 
 Name:		vulkan-loader
 Version:	1.2.131
-Release:	1
+Release:	2
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
