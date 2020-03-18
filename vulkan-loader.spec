@@ -1,3 +1,5 @@
+%define	oname	Vulkan-Loader
+
 %define libname %mklibname vulkan 1
 %define devname %mklibname vulkan -d
 
@@ -8,12 +10,12 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.2.133
+Version:	1.2.135
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
-Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}.tar.gz
+Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(python3)
@@ -71,7 +73,7 @@ Additionally, the loader manages inserting Vulkan layer libraries, such as
 validation layers, between an application and the drivers.
 
 %prep
-%autosetup -n Vulkan-Loader-%{version}
+%autosetup -n %{oname}-%{version}
 
 %build
 %cmake \
