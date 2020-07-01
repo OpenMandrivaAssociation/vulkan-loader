@@ -1,7 +1,13 @@
+%ifarch %{x86_64}
+%bcond_without compat32
+%endif
+
 %define	oname	Vulkan-Loader
 
 %define libname %mklibname vulkan 1
 %define devname %mklibname vulkan -d
+%define lib32name %mklib32name vulkan 1
+%define dev32name %mklib32name vulkan -d
 
 %ifarch %{ix86}
 %global optflags %{optflags} -O3 -fno-integrated-as
@@ -11,7 +17,7 @@
 
 Name:		vulkan-loader
 Version:	1.2.145
-Release:	1
+Release:	2
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
@@ -27,6 +33,16 @@ BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xrandr)
 Requires:	%{libname} = %{EVRD}
+%if %{with compat32}
+BuildRequires:	devel(libwayland-client)
+BuildRequires:	devel(libwayland-cursor)
+BuildRequires:	devel(libwayland-server)
+BuildRequires:	devel(libwayland-egl)
+BuildRequires:	devel(libX11)
+BuildRequires:	devel(libXrandr)
+BuildRequires:	devel(libXau)
+BuildRequires:	devel(libXdmcp)
+%endif
 
 %description
 This project provides the Khronos official Vulkan ICD desktop 
@@ -72,15 +88,67 @@ drivers and the instance-level functionality that works across these drivers.
 Additionally, the loader manages inserting Vulkan layer libraries, such as
 validation layers, between an application and the drivers.
 
+%if %{with compat32}
+%package -n %{lib32name}
+Summary:	Vulkan ICD loader library (32-bit)
+Group:		System/Libraries
+Requires:	%{name} = %{EVRD}
+
+%description -n %{lib32name}
+The Vulkan ICD loader library.
+
+Vulkan is an explicit API, enabling direct control over how GPUs actually work.
+As such, Vulkan supports systems that have multiple GPUs, each running with a
+different driver, or ICD (Installable Client Driver).
+
+Vulkan also supports multiple global contexts (instances, in Vulkan
+terminology). The ICD loader is a library that is placed between a Vulkan
+application and any number of Vulkan drivers, in order to support multiple
+drivers and the instance-level functionality that works across these drivers.
+Additionally, the loader manages inserting Vulkan layer libraries, such as
+validation layers, between an application and the drivers.
+
+%package -n %{dev32name}
+Summary:	Development files for %{name} (32-bit)
+Requires:	%{libname}%{?_isa} = %{version}-%{release}
+Requires:	%{lib32name}%{?_isa} = %{version}-%{release}
+Requires:	vulkan-headers >= %{version}
+
+%description -n %{dev32name}
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
+Vulkan is an explicit API, enabling direct control over how GPUs actually work.
+As such, Vulkan supports systems that have multiple GPUs, each running with a
+different driver, or ICD (Installable Client Driver).
+
+Vulkan also supports multiple global contexts (instances, in Vulkan
+terminology). The ICD loader is a library that is placed between a Vulkan
+application and any number of Vulkan drivers, in order to support multiple
+drivers and the instance-level functionality that works across these drivers.
+Additionally, the loader manages inserting Vulkan layer libraries, such as
+validation layers, between an application and the drivers.
+%endif
+
 %prep
 %autosetup -n %{oname}-%{version}
 
 %build
+%if %{with compat32}
+%cmake32 \
+	-G Ninja
+%ninja_build
+cd ..
+%endif
+
 %cmake \
 	-GNinja
 %ninja_build
 
 %install
+%if %{with compat32}
+%ninja_install -C build32
+%endif
 %ninja_install -C build
 
 # create the filesystem
@@ -106,3 +174,12 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %files -n %{devname}
 %{_libdir}/pkgconfig/vulkan.pc
 %{_libdir}/*.so
+
+%if %{with compat32}
+%files -n %{lib32name}
+%{_prefix}/lib/libvulkan.so.1*
+
+%files -n %{dev32name}
+%{_prefix}/lib/pkgconfig/vulkan.pc
+%{_prefix}/lib/*.so
+%endif
