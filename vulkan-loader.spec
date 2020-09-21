@@ -134,6 +134,7 @@ validation layers, between an application and the drivers.
 
 %prep
 %autosetup -n %{oname}-%{version}
+%autopatch -p1
 
 %build
 %if %{with compat32}
