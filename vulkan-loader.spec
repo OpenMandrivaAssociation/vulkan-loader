@@ -16,14 +16,13 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.2.153
-Release:	2
+Version:	1.2.154
+Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
 Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}/%{oname}-%{version}.tar.gz
-# More info https://github.com/ValveSoftware/steam-for-linux/issues/7368
-Patch0:		0001-Revert-loader-Return-error-if-layer-loading-failed.patch
+
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	pkgconfig(python3)
