@@ -17,11 +17,12 @@
 
 Name:		vulkan-loader
 Version:	1.2.162
-Release:	1
+Release:	2
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
 Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}/%{oname}-%{version}.tar.gz
+Patch0:		vulkan-loader-1.2.162-fix-pkgconfig-file.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja

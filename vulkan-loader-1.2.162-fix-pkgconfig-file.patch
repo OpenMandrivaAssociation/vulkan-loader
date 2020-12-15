@@ -1,0 +1,12 @@
+diff -up Vulkan-Loader-1.2.162/loader/vulkan.pc.in.omv~ Vulkan-Loader-1.2.162/loader/vulkan.pc.in
+--- Vulkan-Loader-1.2.162/loader/vulkan.pc.in.omv~	2020-12-15 21:44:40.257154130 +0100
++++ Vulkan-Loader-1.2.162/loader/vulkan.pc.in	2020-12-15 21:44:48.466246489 +0100
+@@ -6,7 +6,7 @@ includedir=@CMAKE_INSTALL_FULL_INCLUDEDI
+ Name: @CMAKE_PROJECT_NAME@
+ Description: Vulkan Loader
+ Version: @VK_API_VERSION@
+-Libs: -L${libdir} -lvulkan@LIB_SUFFIX@
++Libs: -lvulkan
+ Libs.private: @PRIVATE_LIBS@
+ Cflags: -I${includedir}
+ 
