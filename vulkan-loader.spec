@@ -16,7 +16,7 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.2.169
+Version:	1.2.174
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
@@ -172,6 +172,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 
 %files -n %{libname}
 %{_libdir}/libvulkan.so.1*
+%{_libdir}/libvulkan.so.0*
 
 %files -n %{devname}
 %{_libdir}/pkgconfig/vulkan.pc
@@ -180,6 +181,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %if %{with compat32}
 %files -n %{lib32name}
 %{_prefix}/lib/libvulkan.so.1*
+%{_prefix}/lib/libvulkan.so.0*
 
 %files -n %{dev32name}
 %{_prefix}/lib/pkgconfig/vulkan.pc
