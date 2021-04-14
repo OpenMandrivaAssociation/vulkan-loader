@@ -17,12 +17,13 @@
 
 Name:		vulkan-loader
 Version:	1.2.174
-Release:	1
+Release:	2
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
 Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}/%{oname}-%{version}.tar.gz
 Patch0:		vulkan-loader-1.2.162-fix-pkgconfig-file.patch
+Patch1:		vulkan-loader-fix-header-version-detection.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
@@ -33,6 +34,7 @@ BuildRequires:	pkgconfig(wayland-cursor)
 BuildRequires:	pkgconfig(wayland-server)
 BuildRequires:	pkgconfig(wayland-egl)
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrandr)
 Requires:	%{libname} = %{EVRD}
 %if %{with compat32}
@@ -172,7 +174,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 
 %files -n %{libname}
 %{_libdir}/libvulkan.so.1*
-%{_libdir}/libvulkan.so.0*
 
 %files -n %{devname}
 %{_libdir}/pkgconfig/vulkan.pc
@@ -181,7 +182,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %if %{with compat32}
 %files -n %{lib32name}
 %{_prefix}/lib/libvulkan.so.1*
-%{_prefix}/lib/libvulkan.so.0*
 
 %files -n %{dev32name}
 %{_prefix}/lib/pkgconfig/vulkan.pc
