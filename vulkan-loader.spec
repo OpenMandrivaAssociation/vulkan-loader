@@ -2,7 +2,7 @@
 %bcond_without compat32
 %endif
 
-%define	oname	Vulkan-Loader
+%define oname Vulkan-Loader
 
 %define libname %mklibname vulkan 1
 %define devname %mklibname vulkan -d
@@ -16,7 +16,7 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.2.180
+Version:	1.2.184
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
