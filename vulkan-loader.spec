@@ -16,7 +16,7 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.3.205
+Version:	1.3.207
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
@@ -26,7 +26,7 @@ Patch0:		vulkan-loader-1.2.162-fix-pkgconfig-file.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	vulkan-headers >= %{version}
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-cursor)
