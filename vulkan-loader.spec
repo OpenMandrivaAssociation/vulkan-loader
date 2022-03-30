@@ -16,7 +16,7 @@
 %endif
 
 Name:		vulkan-loader
-Version:	1.3.207
+Version:	1.3.209
 Release:	1
 Summary:	Vulkan ICD desktop loader
 License:	ASL 2.0
@@ -56,7 +56,7 @@ loader for Windows, Linux, and MacOS.
 %package -n %{libname}
 Summary:	Vulkan ICD loader library
 Group:		System/Libraries
-Requires:	%{name} = %{EVRD}
+Requires:	%{name} >= %{EVRD}
 
 %description -n %{libname}
 The Vulkan ICD loader library.
