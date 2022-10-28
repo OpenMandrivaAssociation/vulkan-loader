@@ -3,10 +3,10 @@
 %endif
 
 %define oname Vulkan-Loader
-
-%define libname %mklibname vulkan 1
+%define major 1
+%define libname %mklibname vulkan %{major}
 %define devname %mklibname vulkan -d
-%define lib32name %mklib32name vulkan 1
+%define lib32name %mklib32name vulkan %{major}
 %define dev32name %mklib32name vulkan -d
 
 %ifarch %{ix86}
@@ -15,10 +15,10 @@
 %global optflags %{optflags} -O3
 %endif
 
-Name:		vulkan-loader
-Version:	1.3.231
-Release:	1
 Summary:	Vulkan ICD desktop loader
+Name:		vulkan-loader
+Version:	1.3.232
+Release:	1
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
 Source0:	https://github.com/KhronosGroup/Vulkan-Loader/archive/v%{version}/%{oname}-%{version}.tar.gz
@@ -57,6 +57,7 @@ loader for Windows, Linux, and MacOS.
 Summary:	Vulkan ICD loader library
 Group:		System/Libraries
 Requires:	%{name} >= %{EVRD}
+Recommends:	dri-drivers
 
 %description -n %{libname}
 The Vulkan ICD loader library.
@@ -141,12 +142,14 @@ validation layers, between an application and the drivers.
 %build
 %if %{with compat32}
 %cmake32 \
+	-DVULKAN_HEADERS_INSTALL_DIR=%{_prefix} \
 	-G Ninja
 %ninja_build
 cd ..
 %endif
 
 %cmake \
+	-DVULKAN_HEADERS_INSTALL_DIR=%{_prefix} \
 	-GNinja
 %ninja_build
 
@@ -174,7 +177,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %dir %{_datadir}/vulkan/implicit_layer.d/
 
 %files -n %{libname}
-%{_libdir}/libvulkan.so.1*
+%{_libdir}/libvulkan.so.%{major}*
 
 %files -n %{devname}
 %{_libdir}/pkgconfig/vulkan.pc
@@ -182,7 +185,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 
 %if %{with compat32}
 %files -n %{lib32name}
-%{_prefix}/lib/libvulkan.so.1*
+%{_prefix}/lib/libvulkan.so.%{major}*
 
 %files -n %{dev32name}
 %{_prefix}/lib/pkgconfig/vulkan.pc
