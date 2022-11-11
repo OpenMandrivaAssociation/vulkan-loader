@@ -1,12 +1,12 @@
-diff -uraN Vulkan-Loader-1.2.166/loader/vulkan.pc.in omv-Vulkan-Loader-1.2.166/loader/vulkan.pc.in
---- Vulkan-Loader-1.2.166/loader/vulkan.pc.in	2021-01-05 18:45:38.000000000 +0100
-+++ omv-Vulkan-Loader-1.2.166/loader/vulkan.pc.in	2021-01-12 14:55:14.029957279 +0100
+diff -Naur Vulkan-Loader-1.3.234/loader/vulkan.pc.in Vulkan-Loader-1.3.234.tpg/loader/vulkan.pc.in
+--- Vulkan-Loader-1.3.234/loader/vulkan.pc.in	2022-11-10 16:46:26.000000000 +0000
++++ Vulkan-Loader-1.3.234.tpg/loader/vulkan.pc.in	2022-11-11 21:15:46.133301581 +0000
 @@ -6,7 +6,7 @@
  Name: @CMAKE_PROJECT_NAME@
  Description: Vulkan Loader
  Version: @VK_API_VERSION@
 -Libs: -L${libdir} -lvulkan@VULKAN_LIB_SUFFIX@
 +Libs: -lvulkan
- Libs.private: @PRIVATE_LIBS@
+ @PRIVATE_LIBS@
  Cflags: -I${includedir}
  
