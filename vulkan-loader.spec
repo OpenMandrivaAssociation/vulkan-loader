@@ -17,7 +17,7 @@
 
 Summary:	Vulkan ICD desktop loader
 Name:		vulkan-loader
-Version:	1.3.238
+Version:	1.3.243
 Release:	1
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	pkgconfig(libffi)
+BuildRequires:	pkgconfig(xcb)
 Requires:	%{libname} = %{EVRD}
 %if %{with compat32}
 BuildRequires:	devel(libwayland-client)
@@ -47,6 +48,7 @@ BuildRequires:	devel(libXrandr)
 BuildRequires:	devel(libXau)
 BuildRequires:	devel(libXdmcp)
 BuildRequires:	devel(libffi)
+BuildRequires:	devel(libxcb)
 %endif
 
 %description
