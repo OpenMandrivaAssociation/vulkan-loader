@@ -185,6 +185,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %files -n %{devname}
 %{_libdir}/pkgconfig/vulkan.pc
 %{_libdir}/*.so
+%{_libdir}/cmake/VulkanLoader/
 
 %if %{with compat32}
 %files -n %{lib32name}
@@ -193,4 +194,5 @@ mkdir -p %{buildroot}%{_sysconfdir}/vulkan/{explicit,implicit}_layer.d/ \
 %files -n %{dev32name}
 %{_prefix}/lib/pkgconfig/vulkan.pc
 %{_prefix}/lib/*.so
+%{_prefix}/lib/cmake/VulkanLoader/
 %endif
