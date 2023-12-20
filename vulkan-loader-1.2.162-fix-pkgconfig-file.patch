@@ -1,11 +1,10 @@
-diff -Naur Vulkan-Loader-1.3.243/loader/vulkan.pc.in Vulkan-Loader-1.3.243.tpg/loader/vulkan.pc.in
---- Vulkan-Loader-1.3.243/loader/vulkan.pc.in	2023-03-13 19:18:04.000000000 +0000
-+++ Vulkan-Loader-1.3.243.tpg/loader/vulkan.pc.in	2023-03-16 15:56:38.576574020 +0000
-@@ -6,6 +6,6 @@
- Name: @VULKAN_LOADER_PKG_CONFIG_NAME@
+diff -uraN Vulkan-Loader-1.3.274/loader/vulkan.pc.in omv-Vulkan-Loader-1.3.274/loader/vulkan.pc.in
+--- Vulkan-Loader-1.3.274/loader/vulkan.pc.in	2023-12-19 18:07:54.000000000 +0100
++++ omv-Vulkan-Loader-1.3.274/loader/vulkan.pc.in	2023-12-20 15:19:45.458658909 +0100
+@@ -6,5 +6,5 @@
+ Name: Vulkan-Loader
  Description: Vulkan Loader
  Version: @VULKAN_LOADER_VERSION@
 -Libs: -L${libdir} -lvulkan@VULKAN_LIB_SUFFIX@
 +Libs: -lvulkan
- @PRIVATE_LIBS@
  Cflags: -I${includedir}
