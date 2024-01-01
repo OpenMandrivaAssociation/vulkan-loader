@@ -154,6 +154,11 @@ cd ..
 %cmake \
 	-DVULKAN_HEADERS_INSTALL_DIR=%{_prefix} \
 	-GNinja
+%if %{cross_compiling}
+# FIXME instead of patching it out, we should figure out where
+# it comes from and fix it properly there!
+find . -name build.ninja |xargs sed -i -e 's,-isystem /usr/include$,,'
+%endif
 %ninja_build
 
 %install
