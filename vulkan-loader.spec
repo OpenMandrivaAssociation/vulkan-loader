@@ -18,7 +18,7 @@
 
 Summary:	Vulkan ICD desktop loader
 Name:		vulkan-loader
-Version:	1.3.275
+Version:	1.3.276
 Release:	1
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
