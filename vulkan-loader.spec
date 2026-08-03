@@ -29,6 +29,7 @@ Patch1:		vulkan-loader-1.4.312-no-Iusrinclude.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
+BuildRequires:	xrandr
 BuildRequires:	pkgconfig(python)
 BuildRequires:	vulkan-headers >= %{version}
 BuildRequires:	pkgconfig(wayland-client)
