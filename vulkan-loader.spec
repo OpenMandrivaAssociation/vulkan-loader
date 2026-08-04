@@ -1,6 +1,6 @@
 %global optflags %{optflags} -Wno-error=strict-aliasing
 %ifarch %{x86_64}
-%bcond_without compat32
+%bcond_with compat32
 %endif
 
 %define oname Vulkan-Loader
