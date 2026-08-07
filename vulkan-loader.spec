@@ -18,7 +18,7 @@
 
 Summary:	Vulkan ICD desktop loader
 Name:		vulkan-loader
-Version:	1.4.358
+Version:	1.4.359
 Release:	1
 License:	ASL 2.0
 URL:		https://github.com/KhronosGroup/Vulkan-Loader
@@ -29,7 +29,6 @@ Patch1:		vulkan-loader-1.4.312-no-Iusrinclude.patch
 
 BuildRequires:	cmake
 BuildRequires:	ninja
-BuildRequires:	xrandr
 BuildRequires:	pkgconfig(python)
 BuildRequires:	vulkan-headers >= %{version}
 BuildRequires:	pkgconfig(wayland-client)
@@ -143,7 +142,7 @@ validation layers, between an application and the drivers.
 %endif
 
 %prep
-%autosetup -n Vulkan-Loader-1.4.358 -p1
+%autosetup -n Vulkan-Loader-%{version} -p1
 
 %build
 %if %{with compat32}
