@@ -50,6 +50,8 @@ BuildRequires:	devel(libX11)
 BuildRequires:	devel(libXrandr)
 BuildRequires:	devel(libXau)
 BuildRequires:	devel(libXdmcp)
+BuildRequires:	devel(libXext)
+BuildRequires:	devel(libXrender)
 BuildRequires:	devel(libffi)
 BuildRequires:	devel(libxcb)
 %endif
