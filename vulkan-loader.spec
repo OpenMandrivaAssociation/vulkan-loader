@@ -42,6 +42,9 @@ BuildRequires:	pkgconfig(libffi)
 BuildRequires:	pkgconfig(xcb)
 Requires:	%{libname} = %{EVRD}
 %if %{with compat32}
+BuildRequires:	cross-i686-openmandriva-linux-gnu-clang
+BuildRequires:	cross-i686-openmandriva-linux-gnu-binutils
+BuildRequires:	cross-i686-openmandriva-linux-gnu-libc
 BuildRequires:	devel(libwayland-client)
 BuildRequires:	devel(libwayland-cursor)
 BuildRequires:	devel(libwayland-server)
